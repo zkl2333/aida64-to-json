@@ -9,7 +9,7 @@
 
 文件->设置->外部程序->允许将监测数据写入注册表
 
-![aida64截图](https://github.com/zkl2333/aida64-to-json/blob/master/aida64.png)
+![aida64截图](https://github.com/zkl2333/aida64-to-json/raw/master/aida64.png)
 
 ## Installation
 
