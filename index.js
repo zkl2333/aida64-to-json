@@ -31,4 +31,4 @@ async function readAida64SensorValues() {
     return res
 }
 
-module.exports = readAida64SensorValues()
+module.exports = readAida64SensorValues
