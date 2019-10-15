@@ -1,6 +1,6 @@
 {
   "name": "aida64-to-json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "当设置aida64将传感器数据写入注册表时，读取注册表中的传感器参数并格式化",
   "main": "index.js",
   "scripts": {
