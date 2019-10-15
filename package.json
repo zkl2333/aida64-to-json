@@ -1,14 +1,29 @@
 {
-  "name": "aida64-to-json",
-  "version": "1.0.3",
-  "description": "当设置aida64将传感器数据写入注册表时，读取注册表中的传感器参数并格式化",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "zkl2333",
-  "license": "MIT",
-  "dependencies": {
-    "winreg": "^1.2.4"
-  }
+    "name": "aida64-to-json",
+    "version": "1.0.3",
+    "description": "当设置aida64将传感器数据写入注册表时，读取注册表中的传感器参数并格式化",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:zkl2333/aida64-to-json.git"
+    },
+    "bugs": {
+        "email": "i@zkl2333.com"
+    },
+    "os": [
+        "win32"
+    ],
+    "keywords": [
+        "windows",
+        "registry",
+        "aida64"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "zkl2333",
+    "license": "MIT",
+    "dependencies": {
+        "winreg": "^1.2.4"
+    }
 }
