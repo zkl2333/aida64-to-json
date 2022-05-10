@@ -23,7 +23,5 @@
     },
     "author": "zkl2333",
     "license": "MIT",
-    "dependencies": {
-        "winreg": "^1.2.4"
-    }
+    "dependencies": {}
 }

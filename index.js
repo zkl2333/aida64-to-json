@@ -1,34 +1,22 @@
-const Registry = require("winreg")
-
-// 创建注册表对象
-const regKey = new Registry({
-    hive: Registry.HKCU, // open registry hive HKEY_CURRENT_USER
-    key: "\\Software\\FinalWire\\AIDA64\\SensorValues" // aida64注册表的路径
-})
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
 // 读取aida64检测数据
 async function readAida64SensorValues() {
-    let res = await new Promise(function(resolve, reject) {
-        regKey.values(function(err, items) {
-            let arr = {}
-            if (err) {
-                reject(err)
-            } else {
-                for (var i = 0; i < items.length; i++) {
-                    let nameAtt = items[i].name.split(".")
-                    if (nameAtt[0] == "Label") {
-                        arr[nameAtt[1]] = { lable: items[i].value }
-                    }
-                }
-                for (var i = 0; i < items.length; i++) {
-                    let nameAtt = items[i].name.split(".")
-                    arr[nameAtt[1]].value = items[i].value
-                }
-            }
-            resolve(arr)
-        })
-    })
-    return res
+    const { stdout, stderr } = await exec("chcp 65001 && REG QUERY HKEY_CURRENT_USER\\Software\\FinalWire\\AIDA64\\SensorValues")
+    if (stderr) throw new Error(stderr)
+    const lines = stdout.split('\r\n').filter((line) => line);
+    const sensorValues = lines.reduce((acc, cur) => {
+        const valueArr = cur.split(/\s{2,}/).filter((line) => line)
+        if (valueArr.length === 3) {
+            const [type, key] = valueArr[0].split('.')
+            const value = valueArr[2]
+            if (!acc[key]) acc[key] = {}
+            acc[key][type.toLowerCase()] = value
+        }
+        return acc
+    }, {})
+    return sensorValues
 }
 
 module.exports = readAida64SensorValues
